@@ -30,16 +30,29 @@
 //   // return currentGallons;
 // }
 
-function fuelToAdd(currentGallons, requiredLiters) {
-  console.log(currentGallons, requiredLiters);
-  // convert requiredLiters to gallons
-  const requiredGallons = requiredLiters / 3.78541;
-  console.log('Required Gallons: ', requiredGallons);
-  const defecit = requiredGallons - currentGallons;
-  console.log('Defecit:', defecit);
-  if (defecit < 1 && defecit > 0) {
-    return 1;
-  } else if (defecit === 0) return 0;
-}
+// function fuelToAdd(currentGallons, requiredLiters) {
+//   console.log(currentGallons, requiredLiters);
+//   // convert requiredLiters to gallons
+//   const requiredGallons = requiredLiters / 3.78541;
+//   console.log('Required Gallons: ', requiredGallons);
+//   const defecit = requiredGallons - currentGallons;
+//   console.log('Defecit:', defecit);
+//   if (defecit < 1 && defecit > 0) {
+//     return 1;
+//   } else if (defecit === 0) return 0;
+// }
 
 fuelToAdd(1000, 50000);
+
+function fuelToAdd(currentGallons, requiredLiters) {
+  const literToGallonRatio = 3.78541;
+
+  //1. How many gallons do we need in total?
+  const requiredGallons = requiredLiters / literToGallonRatio;
+
+  //2. What is the gap?
+  const defecit = requiredGallons - currentGallons;
+
+  //3. Return 0 if we are already good, otherwise round UP
+  return defecit <= 0 ? 0 : Math.ceil(defecit);
+}

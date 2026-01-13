@@ -6,28 +6,40 @@
 // You can only add whole gallons.
 // Do not include decimals in the return number.
 
+// function fuelToAdd(currentGallons, requiredLiters) {
+//   console.log(currentGallons, requiredLiters);
+
+//   // 1 gallon = 3.78541 liters
+
+//   // get current gallons in litres
+//   const currentLiters = currentGallons * 3.78541;
+//   console.log(currentLiters);
+//   if (currentLiters > requiredLiters) {
+//     return 0;
+//   }
+//   if (currentLiters < requiredLiters) {
+//     // determine how many additional gallons of fuel you should add
+//     console.log(requiredLiters - currentLiters);
+//     let defecitLiters = requiredLiters - currentLiters;
+//     // if defecitLiters < 3.78541
+//     if (defecitLiters < 3.78541) return 1;
+//   } else {
+//     console.log(defecitLiters / 3.78541);
+//   }
+
+//   // return currentGallons;
+// }
+
 function fuelToAdd(currentGallons, requiredLiters) {
   console.log(currentGallons, requiredLiters);
-
-  // 1 gallon = 3.78541 liters
-
-  // get current gallons in litres
-  const currentLiters = currentGallons * 3.78541;
-  console.log(currentLiters);
-  if (currentLiters > requiredLiters) {
-    return 0;
-  }
-  if (currentLiters < requiredLiters) {
-    // determine how many additional gallons of fuel you should add
-    console.log(requiredLiters - currentLiters);
-    let defecitLiters = requiredLiters - currentLiters;
-    // if defecitLiters < 3.78541
-    if (defecitLiters < 3.78541) return 1;
-  } else {
-    console.log(defecitLiters / 3.78541);
-  }
-
-  // return currentGallons;
+  // convert requiredLiters to gallons
+  const requiredGallons = requiredLiters / 3.78541;
+  console.log('Required Gallons: ', requiredGallons);
+  const defecit = requiredGallons - currentGallons;
+  console.log('Defecit:', defecit);
+  if (defecit < 1 && defecit > 0) {
+    return 1;
+  } else if (defecit === 0) return 0;
 }
 
 fuelToAdd(1000, 50000);
